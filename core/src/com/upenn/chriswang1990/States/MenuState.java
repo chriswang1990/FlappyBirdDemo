@@ -1,10 +1,10 @@
-package com.upenn.chriswang1990.States;
+package com.upenn.chriswang1990.states;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.upenn.chriswang1990.FlappyBirdDemo;
 
-public class MenuState extends State{
+public class MenuState extends State {
 
     private Texture background;
     private Texture playBtn;
@@ -31,5 +31,11 @@ public class MenuState extends State{
         sb.draw(background, 0, 0, FlappyBirdDemo.WIDTH, FlappyBirdDemo.HEIGHT);
         sb.draw(playBtn, (FlappyBirdDemo.WIDTH - playBtn.getWidth()) / 2, FlappyBirdDemo.HEIGHT / 2);
         sb.end();
+    }
+
+    @Override
+    public void dispose() {
+        background.dispose();
+        playBtn.dispose();
     }
 }

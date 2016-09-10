@@ -1,4 +1,4 @@
-package com.upenn.chriswang1990.States;
+package com.upenn.chriswang1990.states;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -29,7 +29,7 @@ public class GameStateManager {
         states.peek().update(dt);
     }
 
-    public  void render(SpriteBatch sb) {
+    public void render(SpriteBatch sb) {
         states.peek().render(sb);
     }
 
