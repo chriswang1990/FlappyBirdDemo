@@ -13,7 +13,7 @@ public class PlayState extends State{
 
     private static final int TUBE_SPACING = 125;
     private static final int TUBE_COUNT = 4;
-    private static final int GROUND_Y_OFFSET = -40;
+    private static final int GROUND_Y_OFFSET = -50;
     private Bird bird;
     private Texture bg;
     private Texture ground;
@@ -58,6 +58,9 @@ public class PlayState extends State{
                 break;
             }
         }
+        if (bird.getPosition().y <= ground.getHeight() + GROUND_Y_OFFSET) {
+            gsm.set(new PlayState(gsm));
+        }
         cam.update();
     }
 
@@ -83,6 +86,7 @@ public class PlayState extends State{
         for (Tube tube : tubes) {
             tube.dispose();
         }
+        ground.dispose();
         System.out.println("Play state disposed!");
     }
 
