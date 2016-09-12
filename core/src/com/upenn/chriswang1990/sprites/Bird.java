@@ -1,5 +1,7 @@
 package com.upenn.chriswang1990.sprites;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
@@ -13,6 +15,7 @@ public class Bird {
     private Rectangle bounds;
     private Animation birdAnimation;
     private Texture animationTexture;
+    private Sound flap;
 
     public Bird(int x, int y) {
         position = new Vector3(x, y, 0);
@@ -20,6 +23,7 @@ public class Bird {
         animationTexture = new Texture("birdanimation.png");
         birdAnimation = new Animation(animationTexture, 3, 0.5f);
         bounds = new Rectangle(x, y, animationTexture.getWidth() / 3, animationTexture.getHeight());
+        flap = Gdx.audio.newSound(Gdx.files.internal("sfx_wing.ogg"));
     }
 
     public void update(float dt) {
@@ -42,6 +46,7 @@ public class Bird {
 
     public void jump() {
         velocity.y = 250;
+        flap.play(0.5f);
     }
 
     public Rectangle getBounds() {
@@ -50,5 +55,6 @@ public class Bird {
 
     public void dispose() {
         animationTexture.dispose();
+        flap.dispose();
     }
 }
